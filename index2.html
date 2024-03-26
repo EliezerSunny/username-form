@@ -14,7 +14,8 @@
         padding: 20px;
         border: 1px solid #ccc;
         border-radius: 5px;
-        background-color: #f9f9f9;
+        background-color: #0000;
+	color: white;
     }
     label {
         display: block;
@@ -24,7 +25,7 @@
         width: 100%;
         padding: 8px;
         margin-bottom: 10px;
-        border: 1px solid #ccc;
+        border: 1px solid red;
         border-radius: 4px;
         box-sizing: border-box;
     }
@@ -32,17 +33,21 @@
         color: red;
         margin-top: 5px;
     }
+    .btn {
+	    background-color: white;
+	    color: black;
+    }
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
-        <h2>Check Username Availability</h2>
+        <h2>Username</h2>
         <form id="usernameForm">
             <label for="username">Enter Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your desired username">
+            <input type="text" id="username" name="username" placeholder="Enter your username">
             <p id="usernameError" class="error-message"></p>
-            <button type="submit">Check Availability</button>
+            <button class="btn" type="submit">Next</button>
         </form>
         <p id="message"></p>
     </div>
