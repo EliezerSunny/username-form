@@ -33,6 +33,7 @@
         margin-top: 5px;
     }
 </style>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -47,40 +48,41 @@
     </div>
 
     <script>
-        document.getElementById("usernameForm").addEventListener("submit", function(event) {
-            event.preventDefault();
-            const inputUsername = document.getElementById("username").value;
-            const usernameError = document.getElementById("usernameError");
-            const messageElement = document.getElementById("message");
+        $(document).ready(function() {
+            $("#usernameForm").submit(function(event) {
+                event.preventDefault();
+                const inputUsername = $("#username").val();
+                const usernameError = $("#usernameError");
+                const messageElement = $("#message");
 
-            // Reset error messages
-            usernameError.textContent = "";
-            messageElement.textContent = "";
+                // Reset error messages
+                usernameError.text("");
+                messageElement.text("");
 
-            // Check for empty username
-            if (inputUsername.trim() === "") {
-                usernameError.textContent = "Please enter a username";
-                return;
-            }
-
-            // Check username availability using AJAX
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET", "check_username.php?username=" + inputUsername, true);
-            xhr.onreadystatechange = function() {
-                if (xhr.readyState === XMLHttpRequest.DONE) {
-                    if (xhr.status === 200) {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.available) {
-                            messageElement.textContent = "Congratulations! Username is available";
-                        } else {
-                            messageElement.textContent = "Sorry, username is already taken";
-                        }
-                    } else {
-                        messageElement.textContent = "Error occurred while checking username availability";
-                    }
+                // Check for empty username
+                if (inputUsername.trim() === "") {
+                    usernameError.text("Please enter a username");
+                    return;
                 }
-            };
-            xhr.send();
+
+                // Check username availability using AJAX
+                $.ajax({
+                    url: "check_username.php",
+                    method: "POST",
+                    data: { username: inputUsername },
+                    dataType: "json",
+                    success: function(response) {
+                        if (response.available) {
+                            messageElement.text("Congratulations! Username is available");
+                        } else {
+                            messageElement.text("Sorry, username is already taken");
+                        }
+                    },
+                    error: function() {
+                        messageElement.text("Error occurred while checking username availability");
+                    }
+                });
+            });
         });
     </script>
 </body>
