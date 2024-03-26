@@ -46,11 +46,7 @@
         <p id="message"></p>
     </div>
 
-    <div>Next form >> <a href="index2.html" alt="index2"></div>
-
     <script>
-        const usernames = ["user1", "user2", "user3"]; // Sample list of existing usernames
-
         document.getElementById("usernameForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const inputUsername = document.getElementById("username").value;
@@ -67,14 +63,24 @@
                 return;
             }
 
-            // Check if username is already taken
-            if (usernames.includes(inputUsername)) {
-                messageElement.textContent = "Sorry, username is already taken";
-                return;
-            }
-
-            // Username is available
-            messageElement.textContent = "Congratulations! Username is available";
+            // Check username availability using AJAX
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET", "check_username.php?username=" + inputUsername, true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        const response = JSON.parse(xhr.responseText);
+                        if (response.available) {
+                            messageElement.textContent = "Congratulations! Username is available";
+                        } else {
+                            messageElement.textContent = "Sorry, username is already taken";
+                        }
+                    } else {
+                        messageElement.textContent = "Error occurred while checking username availability";
+                    }
+                }
+            };
+            xhr.send();
         });
     </script>
 </body>
