@@ -1,94 +1,203 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Username Form</title>
-<style>
-    body {
-        font-family: Arial, sans-serif;
-    }
-    .container {
-        max-width: 400px;
-        margin: 0 auto;
-        padding: 20px;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        background-color: #0000;
-	color: white;
-    }
-    label {
-        display: block;
-        margin-bottom: 5px;
-    }
-    input[type="text"] {
-        width: 100%;
-        padding: 8px;
-        margin-bottom: 10px;
-        border: 1px solid red;
-        border-radius: 4px;
-        box-sizing: border-box;
-    }
-    .error-message {
-        color: red;
-        margin-top: 5px;
-    }
-    .btn {
-	    background-color: white;
-	    color: black;
-    }
-</style>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-</head>
-<body>
-    <div class="container">
-        <h2>Username</h2>
-        <form id="usernameForm">
-            <label for="username">Enter Username:</label>
-            <input type="text" id="username" name="username" placeholder="Enter your username">
-            <p id="usernameError" class="error-message"></p>
-            <button class="btn" type="submit">Next</button>
-        </form>
-        <p id="message"></p>
-    </div>
+<!DOCTYPE html> 
 
-    <script>
-        $(document).ready(function() {
-            $("#usernameForm").submit(function(event) {
-                event.preventDefault();
-                const inputUsername = $("#username").val();
-                const usernameError = $("#usernameError");
-                const messageElement = $("#message");
+<html> 
 
-                // Reset error messages
-                usernameError.text("");
-                messageElement.text("");
+  
 
-                // Check for empty username
-                if (inputUsername.trim() === "") {
-                    usernameError.text("Please enter a username");
-                    return;
-                }
+<head> 
 
-                // Check username availability using AJAX
-                $.ajax({
-                    url: "check_username.php",
-                    method: "POST",
-                    data: { username: inputUsername },
-                    dataType: "json",
-                    success: function(response) {
-                        if (response.available) {
-                            messageElement.text("Congratulations! Username is available");
-                        } else {
-                            messageElement.text("Sorry, username is already taken");
-                        }
-                    },
-                    error: function() {
-                        messageElement.text("Error occurred while checking username availability");
-                    }
-                });
-            });
-        });
-    </script>
-</body>
+    <!-- Latest compiled and minified CSS -->
+
+    <link rel="stylesheet" href= 
+
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> 
+
+    <!-- jQuery library -->
+
+    <script src= 
+
+"https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"> 
+
+    </script> 
+
+    <!-- Popper JS -->
+
+    <script src= 
+
+"https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"> 
+
+    </script> 
+
+    <!-- Latest compiled JavaScript -->
+
+    <script src= 
+
+"https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"> 
+
+    </script> 
+
+</head> 
+
+  
+
+<body> 
+
+    <h1 class="text-center text-success"> 
+
+        Welcome to GeeksforGeeks 
+
+    </h1> 
+
+    <p class="text-center"> 
+
+        FORM VALIDATION USING JQUERY 
+
+    </p> 
+
+  
+
+    <div class="container"> 
+
+        <div class="col-lg-8 
+
+                    m-auto d-block"> 
+
+            <form> 
+
+                <div class="form-group"> 
+
+                    <label for="user"> 
+
+                        Username: 
+
+                    </label> 
+
+                    <input type="text" 
+
+                           name="username" 
+
+                           id="usernames" 
+
+                           class="form-control"> 
+
+                    <h5 id="usercheck" 
+
+                        style="color: red;"> 
+
+                        **Username is missing 
+
+                    </h5> 
+
+                </div> 
+
+  
+
+                <div class="form-group"> 
+
+                    <label for="user"> 
+
+                        Email: 
+
+                    </label> 
+
+                    <input type="email" 
+
+                           name="email" 
+
+                           id="email" required  
+
+                           class="form-control"> 
+
+                    <small id="emailvalid" 
+
+                           class="form-text text-muted invalid-feedback"> 
+
+                        Your email must be a valid email 
+
+                    </small> 
+
+                </div> 
+
+  
+
+                <div class="form-group"> 
+
+                    <label for="password"> 
+
+                        Password: 
+
+                    </label> 
+
+                    <input type="password" 
+
+                           name="pass" 
+
+                           id="password" 
+
+                           class="form-control"> 
+
+                    <h5 id="passcheck" 
+
+                        style="color: red;"> 
+
+                        **Please Fill the password 
+
+                    </h5> 
+
+                </div> 
+
+  
+
+                <div class="form-group"> 
+
+                    <label for="conpassword"> 
+
+                        Confirm Password: 
+
+                    </label> 
+
+                    <input type="password"
+
+                           name="username" 
+
+                           id="conpassword"
+
+                           class="form-control"> 
+
+                    <h5 id="conpasscheck" 
+
+                        style="color: red;"> 
+
+                        **Password didn't match 
+
+                    </h5> 
+
+                </div> 
+
+  
+
+                <input type="submit"
+
+                       id="submitbtn"
+
+                       value="Submit"
+
+                       class="btn btn-primary"> 
+
+            </form> 
+
+        </div> 
+
+    </div> 
+
+  
+
+    <!-- Including app.js jQuery Script -->
+
+    <script src="app.js"></script> 
+
+</body> 
+
+  
+
 </html>
