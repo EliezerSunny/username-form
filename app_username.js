@@ -16,11 +16,11 @@ $(document).ready(function () {
             return false; 
         } else if (usernameValue.length < 5 || usernameValue.length > 20) { 
             $("#usercheck").show(); 
-            $("#usercheck").html("**length of username must be between 5 and 20"); 
+            $("#usercheck").html("Username must be between 5 and 20 characters"); 
             usernameError = false; 
             return false; 
         }
-	    else if (usernameValue.value === Evil || uernameValue.value === evil) {                                     $("#usercheck").show();                           $("#usercheck").html("**length of username must be between 5 and 20");
+	    else if (usernameValue.value === Evil || usernameValue.value === evil) {                                     $("#usercheck").show();                           $("#usercheck").html("Username already taken");
             usernameError = false;                            return false;
         }
 	    else { 
