@@ -29,7 +29,7 @@ $(document).ready(function () {
     } 
   
     // Validate Email 
-    const email = document.getElementById("email"); 
+   /*  const email = document.getElementById("email"); 
     email.addEventListener("blur", () => { 
         let regex =  
         /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/; 
@@ -105,5 +105,5 @@ $(document).ready(function () {
         } else { 
             return false; 
         } 
-    }); 
+    }); */ 
 });
