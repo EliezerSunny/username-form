@@ -24,7 +24,8 @@ $(document).ready(function () {
             usernameError = false;                            return false;
         }
 	    else { 
-            $("#usercheck").hide(); 
+            $("#usercheck").hide();
+	    $("#usercheckk").html("Username is available.");
         } 
     } 
   
