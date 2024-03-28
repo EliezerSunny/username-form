@@ -20,9 +20,9 @@ $(document).ready(function () {
             usernameError = false; 
             return false; 
         }
-	    /*else if (usernameValue === Evil || usernameValue === evil) {                                     $("#usercheck").show();                           $("#usercheck").html("Username already taken");
+	    else if (usernameValue === Evil || usernameValue === evil) {                                     $("#usercheck").show();                           $("#usercheck").html("Username already taken");
             usernameError = false;                            return false;
-        }*/
+        }
 	    else { 
             $("#usercheck").hide(); 
         } 
