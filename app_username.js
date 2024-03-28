@@ -14,7 +14,7 @@ $(document).ready(function () {
             $("#usercheck").show(); 
             usernameError = false; 
             return false; 
-        } else if (usernameValue.length < 5 || usernameValue.length > 20) { 
+        } else if (usernameValue.length < 3 || usernameValue.length > 20) { 
             $("#usercheck").show(); 
             $("#usercheck").html("Username must be between 5 and 20 characters"); 
             usernameError = false; 
