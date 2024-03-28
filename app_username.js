@@ -16,11 +16,13 @@ $(document).ready(function () {
             return false; 
         } else if (usernameValue.length < 3 || usernameValue.length > 20) { 
             $("#usercheck").show(); 
-            $("#usercheck").html("Username must be between 3 and 20 characters"); 
+            $("#usercheck").html("Username must be between 3 and 20 characters");
+	    $("#usercheckk").hide();
             usernameError = false; 
             return false; 
         }
 	    else if (usernameValue === 'Evil' || usernameValue === 'evil') {                                     $("#usercheck").show();                           $("#usercheck").html("Username already taken. Please try another one...");
+	     $("#usercheckk").hide();
             usernameError = false;                            return false;
         }
 	    else { 
