@@ -3,7 +3,6 @@ $(document).ready(function () {
   
     // Validate Username 
     $("#usercheck").hide();
-    $('#submitbtn').prop('disabled', true);
     let usernameError = true; 
     $("#usernames").keyup(function () { 
         validateUsername(); 
@@ -12,12 +11,14 @@ $(document).ready(function () {
     function validateUsername() { 
         let usernameValue = $("#usernames").val(); 
         if (usernameValue.length == "") { 
-            $("#usercheck").show(); 
+            $("#usercheck").show();
+		$('#submitbtn').prop('disabled', true);
             usernameError = false; 
             return false; 
         } else if (usernameValue.length < 3 || usernameValue.length > 20) { 
             $("#usercheck").show();
 	    $('#usernames').css('border-color', 'red');
+		$('#submitbtn').prop('disabled', true);
             $("#usercheck").html("Username must be between 3 and 20 characters");
 	    $("#usercheckk").hide();
             usernameError = false; 
@@ -25,6 +26,7 @@ $(document).ready(function () {
         }
 	    else if (usernameValue === 'Evil' || usernameValue === 'evil') {                                     $("#usercheck").show();
 	     $('#usernames').css('border-color', 'red');
+		    $('#submitbtn').prop('disabled', true);
 	     $("#usercheck").html("Username already taken. Please try another one...");
 	     $("#usercheckk").hide();
             usernameError = false;                            return false;
