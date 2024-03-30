@@ -15,19 +15,22 @@ $(document).ready(function () {
             usernameError = false; 
             return false; 
         } else if (usernameValue.length < 3 || usernameValue.length > 20) { 
-            $("#usercheck").show(); 
+            $("#usercheck").show();
+	    $('#usernames').css('border', '1px solid red');
             $("#usercheck").html("Username must be between 3 and 20 characters");
 	    $("#usercheckk").hide();
             usernameError = false; 
             return false; 
         }
-	    else if (usernameValue === 'Evil' || usernameValue === 'evil') {                                     $("#usercheck").show();                           $("#usercheck").html("Username already taken. Please try another one...");
+	    else if (usernameValue === 'Evil' || usernameValue === 'evil') {                                     $("#usercheck").show();
+	     $('#usernames').css('border', '1px solid red');
+	     $("#usercheck").html("Username already taken. Please try another one...");
 	     $("#usercheckk").hide();
             usernameError = false;                            return false;
         }
 	    else { 
             $("#usercheck").hide();
-	    $("#usercheckk1").show();
+	    $("#usercheckk").show();
 	    $("#usercheckk").html("Username is available.");
         } 
     } 
