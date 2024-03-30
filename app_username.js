@@ -7,6 +7,9 @@ $(document).ready(function () {
     $("#usernames").keyup(function () { 
         validateUsername(); 
     }); 
+    
+    let regexx =  
+        /^([_\-\.0-9a-zA-Z]+)@([_\-\.0-9a-zA-Z]+)\.([a-zA-Z]){2,7}$/;
   
     function validateUsername() { 
         let usernameValue = $("#usernames").val(); 
@@ -19,11 +22,20 @@ $(document).ready(function () {
             $("#usercheck").show();
 	    $('#usernames').css('border-color', 'red');
 		$('#submitbtn').prop('disabled', true);
-            $("#usercheck").html("Username must be between 3 and 20 characters");
+            $("#usercheck").html("Username must be between 3 and 20 characters...");
 	    $("#usercheckk").hide();
             usernameError = false; 
             return false; 
         }
+      
+        
+     /* else if (!regexx.test(usernameValue)) { 
+            $("#usercheck").show();
+            $("#usercheck").html("You can't use this character for username.");
+            usernameError = false; 
+        }
+        */
+         
 	    else if (usernameValue === 'Evil' || usernameValue === 'evil') {                                     $("#usercheck").show();
 	     $('#usernames').css('border-color', 'red');
 		    $('#submitbtn').prop('disabled', true);
