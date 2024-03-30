@@ -27,7 +27,7 @@ $(document).ready(function () {
         }
 	    else { 
             $("#usercheck").hide();
-	    $("#usercheckk<F11>").show();
+	    $("#usercheckk1").show();
 	    $("#usercheckk").html("Username is available.");
         } 
     } 
