@@ -2,7 +2,8 @@
 $(document).ready(function () { 
   
     // Validate Username 
-    $("#usercheck").hide(); 
+    $("#usercheck").hide();
+    $('#submitbtn').prop('disabled', true);
     let usernameError = true; 
     $("#usernames").keyup(function () { 
         validateUsername(); 
@@ -33,6 +34,7 @@ $(document).ready(function () {
 	    $("#usercheckk").show();
 	    $('#usernames').css('border-color', 'green');
 	    $("#usercheckk").html("Username is available.");
+		    $('#submitbtn').prop('disabled', false);
         } 
     } 
   
